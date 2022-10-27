@@ -174,7 +174,7 @@ def griffin_lim(magnitudes, stft_fn, n_iters=30):
         signal = stft_fn.inverse(magnitudes, angles).squeeze(1)
     return signal
 
-## 对谱的动态压缩，取对数
+# 对谱的动态压缩，取对数
 def dynamic_range_compression(x, C=1, clip_val=1e-5):
     """
     PARAMS
@@ -183,7 +183,7 @@ def dynamic_range_compression(x, C=1, clip_val=1e-5):
     """
     return torch.log(torch.clamp(x, min=clip_val) * C)
 
-## 对谱的反动态压缩
+# 对谱的反动态压缩
 def dynamic_range_decompression(x, C=1):
     """
     PARAMS
@@ -192,7 +192,7 @@ def dynamic_range_decompression(x, C=1):
     """
     return torch.exp(x) / C
 
-##  求梅尔谱 算法
+#  求梅尔谱 算法
 class TacotronSTFT(torch.nn.Module):
     def __init__(self, filter_length=1024, hop_length=256, win_length=1024,
                  n_mel_channels=80, sampling_rate=22050, mel_fmin=0.0,
@@ -295,8 +295,8 @@ def extract_mel_feature_bytaco(hp:Create_Prepro_Hparams):
 
     pass
 
-### 观察数据集的 时长分布，对于训练的效果有非常重要的意义。 因此我们观察提取的 全部的melspec的长度（帧数）
-## 作出 直方图。
+# 观察数据集的 时长分布，对于训练的效果有非常重要的意义。 因此我们观察提取的 全部的melspec的长度（帧数）
+# 作出 直方图。
 def plot_hist_of_meldata(datadirname):
     datadirp = Path(datadirname)
 
